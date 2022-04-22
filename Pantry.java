@@ -6,6 +6,8 @@ public class Pantry{
     Item[] items;
 
     public Pantry(){
+
+        //Read from db.txt to create the existing list of items
         try {
             File db = new File("db.txt");
             Scanner reader = new Scanner(db);
@@ -28,5 +30,26 @@ public class Pantry{
             System.out.println("Error with db");
             e.printStackTrace();
         }
+    }
+
+    //Adds item to items
+    //Adds item to db.txt
+    public void addItem(){
+
+    }
+
+    //Removes item from items
+    public void removeItem(){
+
+    }
+
+    //Helper method to check if an item exists
+    private void checkItem(){
+
+    }
+
+    //Helper method to see if an item exists with a certain expiration date
+    private void checkItemDate(){
+
     }
 }
