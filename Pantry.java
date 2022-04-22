@@ -23,6 +23,7 @@ public class Pantry{
                 //if not, add to items
                 //if so, increase quantity
             }
+            reader.close();
         } catch (FileNotFoundException e) {
             System.out.println("Error with db");
             e.printStackTrace();
