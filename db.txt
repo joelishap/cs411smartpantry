@@ -1,1 +1,0 @@
-ItemName, Brand, Price, Quantity, Expiration, DaysTillExpiration
