@@ -1,19 +1,36 @@
+import java.text.SimpleDateFormat;
+import java.util.Date;
+//import packages to convert input string to Date object (for expire notification)
+
+
 public class Item {
 	private String name;
 	private String brand;
 	private double price;
 	private int quantity;
-	private String expireDate;
+	private Date expireDate;
 	// Attributes of Item from group meeting
 
-	public Item(String n, String b, double p, int q, String e) {
+	public Item(String n, String b, double p, int q, String expire) {
 		this.name = n;
 		this.brand = b;
 		this.price = p;
 		this.quantity = q;
-		this.expireDate = e;
+        try{
+            this.expireDate = stringToDate(expire);
+        } catch(Exception e){
+            System.out.println("issue with string to date converstion");
+        }
+		//try/catch to deal with exception thrown in stringToDate helper
 	}
 	// Constructor for Item given specifications
+
+	private Date stringToDate(String expire) throws Exception {  
+		Date date=new SimpleDateFormat("MM/dd/yyyy").parse(expire);  
+		return date;
+	}  
+	//helper to concert string expire date input from user into date object we can use
+	//to calculate days till expiry
 
 	public String getName() {
 		return this.name;
@@ -40,7 +57,7 @@ public class Item {
 	}
 	// method to remove to existing item quantity
 
-	public String getExpire() {
+	public Date getExpire() {
 		return this.expireDate;
 	}
 	// method to check expiry date of item
