@@ -1,5 +1,7 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 //import packages to convert input string to Date object (for expire notification)
 
 
@@ -8,7 +10,7 @@ public class Item {
 	private String brand;
 	private double price;
 	private int quantity;
-	private Date expireDate;
+	private LocalDate expireDate;
 	// Attributes of Item from group meeting
 
 	public Item(String n, String b, double p, int q, String expire) {
@@ -25,8 +27,10 @@ public class Item {
 	}
 	// Constructor for Item given specifications
 
-	private Date stringToDate(String expire) throws Exception {  
-		Date date=new SimpleDateFormat("MM/dd/yyyy").parse(expire);  
+	private LocalDate stringToDate(String expire) throws Exception {  
+		DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+
+		LocalDate date = LocalDate.parse(expire, dateFormat);  
 		return date;
 	}  
 	//helper to concert string expire date input from user into date object we can use
@@ -57,7 +61,7 @@ public class Item {
 	}
 	// method to remove to existing item quantity
 
-	public Date getExpire() {
+	public LocalDate getExpire() {
 		return this.expireDate;
 	}
 	// method to check expiry date of item
@@ -68,7 +72,10 @@ public class Item {
 	}
 	// create a string to add to the database
 
-//I'm still not too sure what you guys wanted me to do so I outlined a constructor 
-//and some very basic methods to check or add to an Item object
+	//finds days till expiration date
+	public int daysTillExperiation(){
+		LocalDate currentDate = LocalDate.now();
+		return currentDate.compareTo(this.expireDate);
+	}
 
 }
