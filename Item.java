@@ -14,19 +14,16 @@ public class Item {
 	private double price;
 	private int quantity;
 	private LocalDate expireDate;
+	String expire;
 	// Attributes of Item from group meeting
-//	private ChronoLocalDate currentDate;
 
 	public Item(String n, String b, double p, int q, String expire) {
 		this.name = n;
 		this.brand = b;
 		this.price = p;
 		this.quantity = q;
-        try{
-            this.expireDate = stringToDate(expire);
-        } catch(Exception e){
-            System.out.println("issue with string to date converstion");
-        }
+		this.expire = expire;
+        
 		//try/catch to deal with exception thrown in stringToDate helper
 	}
 	// Constructor for Item given specifications
@@ -71,13 +68,18 @@ public class Item {
 	// method to check expiry date of item
 
 	public String stringFormat() {
-		String s = this.name + ", " + this.brand + ", " + this.price + ", " + this.quantity + ", " + this.expireDate;
+		String s = this.name + ", " + this.brand + ", " + this.price + ", " + this.quantity + ", " + this.expire;
 		return s;
 	}
 	// create a string to add to the database
 
 	//finds days till expiration date
 	public long daysTillExperiation(){
+		try{
+            this.expireDate = stringToDate(this.expire);
+        } catch(Exception e){
+            System.out.println("issue with string to date converstion");
+        }
 		LocalDate currentDate = LocalDate.now();
 		return currentDate.until(this.expireDate, ChronoUnit.DAYS);
 	}

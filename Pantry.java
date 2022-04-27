@@ -24,7 +24,7 @@ public class Pantry {
 						Integer.valueOf(dataSplit[3]), dataSplit[4]);
 
 				// add the item into the items arraylist
-				items.add(item);
+//				items.add(item);
 
 				// String[0] is ItemName
 				// String[1] is Brand

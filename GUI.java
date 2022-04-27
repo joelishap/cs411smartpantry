@@ -119,6 +119,7 @@ public class GUI implements ActionListener {
 		// display all items in the pantry
 		System.out.println("Item, Brand, Price, Quantity, Expiration Date");
 		Pantry.printItems();
+		System.out.println("Expires In: " + newItem.daysTillExperiation() + " days");
 
 		// Update the database by creating a new file
 		Pantry.newFile();

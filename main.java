@@ -4,14 +4,14 @@ public class main {
 
 	public static void main(String args[]) throws IOException {
 
-		Pantry newPantry = new Pantry();
+//		Pantry newPantry = new Pantry();
+//
+//		Item newItem = new Item("Doritos", "a brand", 4.0, 4, "12/22/2022");
+//		Pantry.addItem(newItem);
 
-		Item newItem = new Item("Doritos", "a brand", 4.0, 4, "12/22/2022");
-		Pantry.addItem(newItem);
-
-		System.out.println(newItem.daysTillExperiation());
+//		System.out.println(newItem.daysTillExperiation());
 		// read in the inputs from user
-		/*String action = args[0]; // add or remove item from pantry
+		String action = args[0]; // add or remove item from pantry
 		String item = args[1];
 		String brand = args[2];
 		double price = Double.valueOf(args[3]);
@@ -32,11 +32,16 @@ public class main {
 		System.out.println();
 
 		// display all items in the pantry
+		System.out.println("Expires In: " );
 		System.out.println("Item, Brand, Price, Quantity, Expiration Date");
 		Pantry.printItems();
+		
+//		
+		System.out.println("Expires In: " );
+		System.out.println("Expires In: " + newItem.daysTillExperiation() + " days");
 
 		// Update the database by creating a new file
-		Pantry.newFile();*/
+		Pantry.newFile();
 
 	}
 }
