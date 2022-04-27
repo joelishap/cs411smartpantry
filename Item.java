@@ -1,7 +1,10 @@
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.time.LocalDate;
+import java.time.chrono.ChronoLocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.TemporalUnit;
+import java.time.temporal.ChronoUnit;
 //import packages to convert input string to Date object (for expire notification)
 
 
@@ -12,6 +15,7 @@ public class Item {
 	private int quantity;
 	private LocalDate expireDate;
 	// Attributes of Item from group meeting
+//	private ChronoLocalDate currentDate;
 
 	public Item(String n, String b, double p, int q, String expire) {
 		this.name = n;
@@ -73,9 +77,9 @@ public class Item {
 	// create a string to add to the database
 
 	//finds days till expiration date
-	public int daysTillExperiation(){
+	public long daysTillExperiation(){
 		LocalDate currentDate = LocalDate.now();
-		return currentDate.compareTo(this.expireDate);
+		return currentDate.until(this.expireDate, ChronoUnit.DAYS);
 	}
 
 }
