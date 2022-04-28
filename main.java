@@ -20,7 +20,7 @@ public class main {
 
 		// create the item
 		Item newItem = new Item(item, brand, price, quantity, expireDate);
-		Pantry newPantry = new Pantry();
+//		Pantry newPantry = new Pantry();
 
 		if (action.equals("Add")) { // if the user wants to add an item to the pantry
 			Pantry.addItem(newItem);
@@ -32,16 +32,13 @@ public class main {
 		System.out.println();
 
 		// display all items in the pantry
-		System.out.println("Expires In: " );
 		System.out.println("Item, Brand, Price, Quantity, Expiration Date");
 		Pantry.printItems();
-		
-//		
-		System.out.println("Expires In: " );
+
 		System.out.println("Expires In: " + newItem.daysTillExperiation() + " days");
 
 		// Update the database by creating a new file
-		Pantry.newFile();
+//		Pantry.newFile();
 
 	}
 }

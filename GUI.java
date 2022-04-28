@@ -30,6 +30,9 @@ public class GUI implements ActionListener {
 	private static JScrollPane sp;
 
 	public static void main(String[] args) {
+
+		Pantry newPantry = new Pantry();
+
 		JPanel panel = new JPanel();
 		JFrame frame = new JFrame();
 		frame.setSize(500, 500);
@@ -99,13 +102,29 @@ public class GUI implements ActionListener {
 		String action = actionText.getText();
 		String item = itemText.getText();
 		String brand = brandText.getText();
-		Double price = Double.valueOf(priceText.getText());
-		Integer quantity = Integer.valueOf(quantityText.getText());
+		double price = Double.valueOf(priceText.getText());
+		int quantity = Integer.valueOf(quantityText.getText());
 		String expireDate = expireDateText.getText();
+
+//		String[] list = { action, item, brand, price, quantity, expireDate };
+//		try {
+//			main.main(list);
+//		} catch (IOException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+
+		// read in the inputs from user
+//		String action = args[0]; // add or remove item from pantry
+//		String item = args[1];
+//		String brand = args[2];
+//		double price = Double.valueOf(args[3]);
+//		int quantity = Integer.valueOf(args[4]);
+//		String expireDate = args[5];
 
 		// create the item
 		Item newItem = new Item(item, brand, price, quantity, expireDate);
-		Pantry newPantry = new Pantry();
+//		Pantry newPantry = new Pantry();
 
 		if (action.equals("Add")) { // if the user wants to add an item to the pantry
 			Pantry.addItem(newItem);
@@ -119,10 +138,13 @@ public class GUI implements ActionListener {
 		// display all items in the pantry
 		System.out.println("Item, Brand, Price, Quantity, Expiration Date");
 		Pantry.printItems();
+
 		System.out.println("Expires In: " + newItem.daysTillExperiation() + " days");
 
 		// Update the database by creating a new file
 		Pantry.newFile();
+
+		DisplayPantry.main(null);
 
 	}
 }

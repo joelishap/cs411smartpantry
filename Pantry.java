@@ -24,7 +24,7 @@ public class Pantry {
 						Integer.valueOf(dataSplit[3]), dataSplit[4]);
 
 				// add the item into the items arraylist
-//				items.add(item);
+				items.add(item);
 
 				// String[0] is ItemName
 				// String[1] is Brand
@@ -51,7 +51,19 @@ public class Pantry {
 		if (item.getQuantity() != 0) {
 			int index = checkItem(item);
 			if (index != -1) {
+
+				System.out.println();
+				System.out.println("before add");
+				printItems();
+				System.out.println();
+
 				items.get(index).addQuantity(item.getQuantity());
+
+				System.out.println();
+				System.out.println("after add");
+				printItems();
+				System.out.println();
+
 				System.out.println("Item exists in the pantry, adding quantity");
 			} else {
 				items.add(item);
@@ -121,6 +133,7 @@ public class Pantry {
 	// creates a new file, fill the file using the items in items arraylist, delete
 	// the old database, rename the new file as the database
 	public static void newFile() {
+
 		try {
 			File tempFile = new File("tempfile.txt");
 			BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
@@ -139,4 +152,4 @@ public class Pantry {
 			e.printStackTrace();
 		}
 	}
-    }
+}
