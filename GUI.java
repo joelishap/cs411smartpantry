@@ -5,13 +5,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
 
 public class GUI implements ActionListener {
-
-//	private JFrame frame = new JFrame();
 
 	private static JLabel actionLabel;
 	private static JTextField actionText;
@@ -26,9 +22,8 @@ public class GUI implements ActionListener {
 	private static JLabel expireDateLabel;
 	private static JTextField expireDateText;
 	private static JButton button;
-	private static JTextPane textPane;
-	private static JScrollPane sp;
 
+	// Create the GUI for users to input information about an item
 	public static void main(String[] args) {
 
 		Pantry newPantry = new Pantry();
@@ -42,51 +37,51 @@ public class GUI implements ActionListener {
 		panel.setLayout(null);
 
 		actionLabel = new JLabel("Action");
-		actionLabel.setBounds(10, 20, 80, 25);
+		actionLabel.setBounds(10, 20, 120, 25);
 		panel.add(actionLabel);
 
 		actionText = new JTextField(20);
-		actionText.setBounds(100, 20, 165, 25);
+		actionText.setBounds(140, 20, 165, 25);
 		panel.add(actionText);
 
 		itemLabel = new JLabel("Item Name");
-		itemLabel.setBounds(10, 50, 80, 25);
+		itemLabel.setBounds(10, 50, 120, 25);
 		panel.add(itemLabel);
 
 		itemText = new JTextField(20);
-		itemText.setBounds(100, 50, 165, 25);
+		itemText.setBounds(140, 50, 165, 25);
 		panel.add(itemText);
 
 		brandLabel = new JLabel("Item Brand");
-		brandLabel.setBounds(10, 80, 80, 25);
+		brandLabel.setBounds(10, 80, 120, 25);
 		panel.add(brandLabel);
 
 		brandText = new JTextField(20);
-		brandText.setBounds(100, 80, 165, 25);
+		brandText.setBounds(140, 80, 165, 25);
 		panel.add(brandText);
 
 		priceLabel = new JLabel("Item Price");
-		priceLabel.setBounds(10, 110, 80, 25);
+		priceLabel.setBounds(10, 110, 120, 25);
 		panel.add(priceLabel);
 
 		priceText = new JTextField(20);
-		priceText.setBounds(100, 110, 165, 25);
+		priceText.setBounds(140, 110, 165, 25);
 		panel.add(priceText);
 
 		quantityLabel = new JLabel("Item Quantity");
-		quantityLabel.setBounds(10, 140, 80, 25);
+		quantityLabel.setBounds(10, 140, 120, 25);
 		panel.add(quantityLabel);
 
 		quantityText = new JTextField(20);
-		quantityText.setBounds(100, 140, 165, 25);
+		quantityText.setBounds(140, 140, 165, 25);
 		panel.add(quantityText);
 
 		expireDateLabel = new JLabel("Item Expiration Date");
-		expireDateLabel.setBounds(10, 170, 80, 25);
+		expireDateLabel.setBounds(10, 170, 120, 25);
 		panel.add(expireDateLabel);
 
 		expireDateText = new JTextField(20);
-		expireDateText.setBounds(100, 170, 165, 25);
+		expireDateText.setBounds(140, 170, 165, 25);
 		panel.add(expireDateText);
 
 		button = new JButton("Enter");
@@ -98,6 +93,8 @@ public class GUI implements ActionListener {
 	}
 
 	@Override
+	// When the user clicks on the "Enter" button, update the pantry as specified
+	// and display the updated pantry
 	public void actionPerformed(ActionEvent e) {
 		String action = actionText.getText();
 		String item = itemText.getText();
@@ -106,44 +103,19 @@ public class GUI implements ActionListener {
 		int quantity = Integer.valueOf(quantityText.getText());
 		String expireDate = expireDateText.getText();
 
-//		String[] list = { action, item, brand, price, quantity, expireDate };
-//		try {
-//			main.main(list);
-//		} catch (IOException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
-
-		// read in the inputs from user
-//		String action = args[0]; // add or remove item from pantry
-//		String item = args[1];
-//		String brand = args[2];
-//		double price = Double.valueOf(args[3]);
-//		int quantity = Integer.valueOf(args[4]);
-//		String expireDate = args[5];
-
-		// create the item
 		Item newItem = new Item(item, brand, price, quantity, expireDate);
-//		Pantry newPantry = new Pantry();
 
-		if (action.equals("Add")) { // if the user wants to add an item to the pantry
+		if (action.equals("Add")) {
 			Pantry.addItem(newItem);
 
-		} else { // if the user wants to remove an item from the pantry
+		} else {
 			Pantry.removeItem(newItem);
 		}
 
-		System.out.println();
-
-		// display all items in the pantry
-		System.out.println("Item, Brand, Price, Quantity, Expiration Date");
+		System.out.println("Item, Brand, Price, Quantity, Expiration Date, Days until Expiration Date");
 		Pantry.printItems();
 
-		System.out.println("Expires In: " + newItem.daysTillExperiation() + " days");
-
-		// Update the database by creating a new file
 		Pantry.newFile();
-
 		DisplayPantry.main(null);
 
 	}
